@@ -13,20 +13,14 @@ import {
   HeaderComponent,
   
 } from './shared';
-import { PlayerListComponent } from './player-list/player-list.component';
+ 
 import { HomeComponent } from './home/home.component';
-import { ScoutsComponent } from './scouts/scouts.component';
-import { MedicalComponent } from './medical/medical.component';
-import { ReportsComponent } from './reports/reports.component';
-import { PlayerStackComponent } from './player-stack/player-stack.component';
+import { MovielistComponent } from './movielist/movielist.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'playerlist', component: PlayerListComponent },
-  { path: 'playerstack', component: PlayerStackComponent },
-  { path: 'scouts', component: ScoutsComponent },
-  { path: 'medical', component: MedicalComponent },
-  { path: 'reports', component: ReportsComponent },
+  { path: 'movielist', component: MovielistComponent},
+   
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 @NgModule({
@@ -34,13 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    PlayerListComponent,
     HomeComponent,
-    ScoutsComponent,
-    MedicalComponent,
-    ReportsComponent,
-    PlayerStackComponent,
-    
+    MovielistComponent,
     
   ],
   imports: [
