@@ -12,11 +12,11 @@ import {Movie, IMovie} from '../../models/movie'
  
 export class MovielistComponent implements OnInit {
 
-  movieService:MovieService;
+ 
   movies:IMovie [];
 
-  constructor(movieService:MovieService) {
-    this.movieService = movieService;
+  constructor(private movieService:MovieService) {
+  
    }
 
   ngOnInit() {
