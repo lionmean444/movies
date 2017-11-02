@@ -4,12 +4,12 @@ import {Movie, IMovie} from '../../models/movie'
 @Injectable()
 export class MovieService {
 
-  mov: Movie = new Movie('title',3,false,new Date('1/2/2017'),true,[]);
+  mov: Movie = new Movie(1, 'title',3,false,new Date('1/2/2017'),true,[]);
  
   movies:IMovie[] = [
    this.mov,
-   new Movie('title',3,false,new Date('1/2/2017'),true,[]),
-   {title:'title',rating:3,thiss:false, dateWatched: new Date('1/2/2017'),watchAgain:true, characters: []}
+   new Movie(2, 'title',3,false,new Date('1/2/2017'),true,[]),
+   {id:3, title:'title',rating:3,thiss:false, dateWatched: new Date('1/2/2017'),watchAgain:true, characters: []}
    //{'title',3,false,new Date('1/2/2017'),true,[]}
 ]
 
