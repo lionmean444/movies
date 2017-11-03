@@ -2,6 +2,17 @@
   
   {{movies.length}} movies 
 </h1>
+
+<div class="row">
+<div class="col-md-6">
+  col 6
+</div>
+<div class="col-md-6">
+    col 6
+  </div>
+
+</div>
+
 <h1 *ngIf="!movies">loading movies...</h1>
 <p *ngFor="let  m of movies">
   {{m.title}}</p>
