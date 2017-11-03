@@ -1,5 +1,7 @@
-<h1>
+<h1 *ngIf="movies">
   
   {{movies.length}} movies 
 </h1>
-<p>{{movies[0].title}}</p>
+<h1 *ngIf="!movies">loading movies...</h1>
+<p *ngFor="let  m of movies">
+  {{m.title}}</p>

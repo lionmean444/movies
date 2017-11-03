@@ -1,4 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+
 import {MovieService} from '../services/movie-service.service'
 import {Movie, IMovie} from '../../models/movie'
 
@@ -13,14 +16,17 @@ import {Movie, IMovie} from '../../models/movie'
 export class MovielistComponent implements OnInit {
 
  
-  movies:IMovie [];
+  movies:Movie[];
 
   constructor(private movieService:MovieService) {
   
    }
 
   ngOnInit() {
-    this.movies = this.movieService.getMovies();
+   // this.movies = this.movieService.getStaticMovies(); //static
+
+  this.movieService.getMovies().then(data => this.movies = data);
+   
   }
 
 }
