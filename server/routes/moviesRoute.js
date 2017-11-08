@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/movies',{ useMongoClient: true });
+//var conn = 'mongodb://localhost:27017/movies';
+var conn = 'mongodb://admin:1212@cluster0-shard-00-00-gslbm.mongodb.net:27017,cluster0-shard-00-01-gslbm.mongodb.net:27017,cluster0-shard-00-02-gslbm.mongodb.net:27017/movies?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
+
+mongoose.connect( conn,{ useMongoClient: true });
 
 var MovieSchema = new mongoose.Schema({
     id:Number,
