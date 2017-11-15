@@ -1,0 +1,10 @@
+.movieListDiv{
+    font-size:14px;
+    line-height: 175%;
+    border:1px solid orange;
+    margin-bottom:8px;
+    padding: 6px;
+}
+.movieListDiv > .title{
+    font-weight: bold;
+}
