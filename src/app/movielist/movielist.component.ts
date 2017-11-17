@@ -17,6 +17,7 @@ export class MovielistComponent implements OnInit {
 
  
   movies:Movie[];
+  editMode: boolean;
 
   constructor(private movieService:MovieService) {
     //the following is needed as oninit doesnt refresh
@@ -34,6 +35,11 @@ export class MovielistComponent implements OnInit {
         .then(() => {
           this.movies = this.movies.filter(m => m !== movie);
           });
+  }
+  public editModeToggle(turnOn:boolean){
+    console.log('editMode is '+ this.editMode+'turning it '+ turnOn);
+    this.editMode = turnOn;
+    return false;
   }
 
 }

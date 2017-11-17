@@ -46,3 +46,6 @@
 .navbar{
     min-height:10px;  
   }
+  .smallLink{
+      font-size: 15px;
+  }

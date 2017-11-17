@@ -1,7 +1,9 @@
 <h1 *ngIf="movies">
   
-  {{movies.length}} movies 
-</h1>
+  {{movies.length}} movies
+  <p> 
+  </h1>
+  <a  href="#"  class="smallLink"  (click)="editModeToggle(!editMode)">{{editMode ? 'Turn off edit' : 'Edit'}} </a>
 
  
 
@@ -15,7 +17,9 @@
   {{m.watchAgain}} <br/>
   {{m.thiss}} <br/>
   {{m._id}} <br/>
+  <span *ngIf="editMode">
   <button (click)="deleteMovie(m)">Delete</button>
+</span>
   </div>
 </div>
 </div>
