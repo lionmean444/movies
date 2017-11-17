@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {MovieService} from '../services/movie-service.service'
 import {Movie, IMovie} from '../../models/movie'
 
@@ -13,7 +14,7 @@ export class AddMovieComponent implements OnInit {
   submitted:boolean;
   movie:IMovie = new Movie(1,'test', 3,true, new Date(),true, []);
   
-  constructor(private movieService:MovieService) {
+  constructor(private movieService:MovieService, private router: Router) {
     
      }
 
@@ -21,15 +22,12 @@ export class AddMovieComponent implements OnInit {
   }
 
   onSubmit() { 
-    this.submitted = true;
-    
-    var t = this.movie.title;
-    console.log('t= '+t);
-    console.log('movie= '+JSON.stringify(this.movie));
+ 
 
   }
   public save(){
     this.movieService.addMovie(this.movie);
     console.log('movie= '+JSON.stringify(this.movie));
+    this.router.navigateByUrl('/movielist');
   }
 }

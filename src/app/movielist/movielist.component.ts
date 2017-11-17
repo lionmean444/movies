@@ -19,7 +19,8 @@ export class MovielistComponent implements OnInit {
   movies:Movie[];
 
   constructor(private movieService:MovieService) {
-  
+    //the following is needed as oninit doesnt refresh
+    this.movieService.getMovies().then(data => this.movies = data);
    }
 
   ngOnInit() {
