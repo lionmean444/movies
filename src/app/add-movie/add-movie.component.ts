@@ -11,7 +11,7 @@ import {Movie, IMovie} from '../../models/movie'
 })
 export class AddMovieComponent implements OnInit {
   submitted:boolean;
-  movie:IMovie = new Movie(1,'test', 3,true, new Date('1/1/2018'),true, []);
+  movie:IMovie = new Movie(1,'test', 3,true, new Date(),true, []);
   
   constructor(private movieService:MovieService) {
     
