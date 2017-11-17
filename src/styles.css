@@ -49,3 +49,8 @@
   .smallLink{
       font-size: 15px;
   }
+  .outline{
+      border: gray solid 2px;
+      padding: 8px;
+      margin: 8px;
+  }
