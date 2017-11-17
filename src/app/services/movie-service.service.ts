@@ -30,6 +30,17 @@ export class MovieService {
     return this.movies;
   }
 
+  public addMovie(movie:IMovie){
+    this.http.post(this.moviesUrl, movie).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log("Error occured");
+      }
+    );
+  }
+
   private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;
