@@ -1,3 +1,5 @@
+
+
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -10,12 +12,12 @@ export class MovieService {
   private moviesUrl = 'http://127.0.0.1:3000/movies'; 
   private headers = new Headers({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*'});
 
-  mov: Movie = new Movie(1, 'title',3,false,new Date('1/2/2017'),true,[]);
+  mov: Movie = new Movie('1', 1, 'title',3,false,new Date('1/2/2017'),true,[]);
  
   movies:IMovie[] = [
    this.mov,
-   new Movie(2, 'title',3,false,new Date('1/2/2017'),true,[]),
-   {id:3, title:'title',rating:3,thiss:false, dateWatched: new Date('1/2/2017'),watchAgain:true, characters: []}
+   new Movie('2',2, 'title',3,false,new Date('1/2/2017'),true,[]),
+   {_id:'1',id:3, title:'title',rating:3,thiss:false, dateWatched: new Date('1/2/2017'),watchAgain:true, characters: []}
    //{'title',3,false,new Date('1/2/2017'),true,[]}
 ]
 
@@ -30,15 +32,19 @@ export class MovieService {
     return this.movies;
   }
 
-  public addMovie(movie:IMovie){
-    this.http.post(this.moviesUrl, movie).subscribe(
-      res => {
-        console.log(res);
-      },
-      err => {
-        console.log("Error occured");
-      }
-    );
+  public addMovie(movie:IMovie): Promise<void> {
+    return this.http.post(this.moviesUrl, movie).toPromise()
+    .then(() => null)
+    .catch(this.handleError);
+    
+  }
+
+  public deleteMovie(id:String): Promise<void> {
+    const url = `${this.moviesUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
   }
 
   private handleError(error: Response | any) {

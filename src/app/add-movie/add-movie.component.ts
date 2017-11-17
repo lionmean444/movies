@@ -12,7 +12,7 @@ import {Movie, IMovie} from '../../models/movie'
 })
 export class AddMovieComponent implements OnInit {
   submitted:boolean;
-  movie:IMovie = new Movie(1,'test', 3,true, new Date(),true, []);
+  movie:IMovie = new Movie(null, 1,'test', 3,true, new Date(),true, []);
   
   constructor(private movieService:MovieService, private router: Router) {
     
@@ -26,8 +26,13 @@ export class AddMovieComponent implements OnInit {
 
   }
   public save(){
-    this.movieService.addMovie(this.movie);
-    console.log('movie= '+JSON.stringify(this.movie));
+    this.movieService.addMovie(this.movie)
+    .then(() => {
+      console.log('added movie' + this.movie.title);
+     // this.movies = this.movies.filter(m => m !== movie);
+     //see how we can modify the list movie[] and add this instead of a reload.
+      });
+
     this.router.navigateByUrl('/movielist');
   }
 }

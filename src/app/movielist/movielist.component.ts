@@ -29,5 +29,11 @@ export class MovielistComponent implements OnInit {
   this.movieService.getMovies().then(data => this.movies = data);
    
   }
+  deleteMovie(movie: IMovie): void {
+    this.movieService.deleteMovie(movie._id)
+        .then(() => {
+          this.movies = this.movies.filter(m => m !== movie);
+          });
+  }
 
 }
