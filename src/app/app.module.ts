@@ -18,11 +18,13 @@ import {
 import { HomeComponent } from './home/home.component';
 import { MovielistComponent } from './movielist/movielist.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import { EditMovieComponent } from './edit-movie/edit-movie.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'movielist', component: MovielistComponent},
   { path: 'add-movie', component: AddMovieComponent},
+  { path: 'edit-movie/:id', component: EditMovieComponent},
    
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
     HomeComponent,
     MovielistComponent,
     AddMovieComponent,
+    EditMovieComponent,
     
   ],
   imports: [

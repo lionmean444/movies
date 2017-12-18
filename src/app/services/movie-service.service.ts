@@ -5,6 +5,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import {Movie, IMovie} from '../../models/movie'
+ 
 
 @Injectable()
 export class MovieService {
@@ -37,6 +38,18 @@ export class MovieService {
     .then(() => null)
     .catch(this.handleError);
     
+  }
+
+  public editMovie(movie:IMovie): Promise<void> {
+    return this.http.put(this.moviesUrl+"/"+movie._id, movie).toPromise()
+    .then(() => null)
+    .catch(this.handleError);
+    
+  }
+
+  public getMovie(id:String): Promise<Movie> {
+    const url = `${this.moviesUrl}/${id}`;
+    return this.http.get(url).toPromise().then(response => response.json() as Movie).catch(this.handleError);
   }
 
   public deleteMovie(id:String): Promise<void> {

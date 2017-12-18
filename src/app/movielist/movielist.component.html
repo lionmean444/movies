@@ -14,10 +14,13 @@
     <div class="movieListDiv" *ngFor="let  m of movies">
       <span class="title">{{m.title}} </span>
       <br/> Date Watched: {{m.dateWatched |date:'shortDate' }}
+      <br/>Rating: {{m.rating}}
       <br/> Watch Again: {{m.watchAgain}}
       <br/> {{m.thiss}}
       <span *ngIf="editMode">
       <br/>ID: {{m._id}}
+      <br/>
+     <a [routerLink]="['/edit-movie', m._id]">Edit</a>
       <br/>
         <button (click)="deleteMovie(m)">Delete</button>
       </span>
