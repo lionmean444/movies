@@ -12,7 +12,7 @@ import {Movie, IMovie} from '../../models/movie'
 })
 export class AddMovieComponent implements OnInit {
   submitted:boolean;
-  movie:IMovie = new Movie(null, 1,'test', 3,true, new Date(),true, []);
+  movie:IMovie = new Movie(null, 1,'', null ,false, new Date(),false, []);
   
   constructor(private movieService:MovieService, private router: Router) {
     
