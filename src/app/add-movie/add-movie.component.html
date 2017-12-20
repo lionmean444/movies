@@ -8,9 +8,7 @@
 
   <div class="row">
     <div *ngFor="let m of searchResults" style="padding:5px; border: 1px solid red">
-      <p>
-        <img src={{m.posterr}}/>
-      </p>
+        <app-movie-poster [movieID]='m.id'></app-movie-poster>
       <p>
       {{m.title}}<a (click)="selectMovie(m.id)">Add</a>    <a (click)="selectMovie(m.id)">To watch</a>
     </p>
@@ -24,8 +22,10 @@
 
   <div class="row">
     <div class="col-sm-4  text-center">
+      
       <form class="outline" (ngSubmit)="onSubmit()" #movieForm="ngForm">
-        <span *ngIf="selectedSearchResult.posterr"><img [src]=selectedSearchResult.posterr/></span>
+        
+        <app-movie-poster [movieID]=selectedSearchResult.id></app-movie-poster>
         <div class="form-group">
           <label for="title">Title</label>
           <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title">

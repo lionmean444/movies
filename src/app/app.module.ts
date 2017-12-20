@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { MovielistComponent } from './movielist/movielist.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import { MoviePosterComponent } from './movie-poster/movie-poster.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     MovielistComponent,
     AddMovieComponent,
     EditMovieComponent,
+    MoviePosterComponent,
     
   ],
   imports: [
