@@ -101,6 +101,21 @@ export class MovieService {
     );
   }
 
+  public lookupMovie(id:Number):Promise<any>{
+    console.log('begin looking up movie: '+ id);
+    var url = this.apiURL+'/movie/'+id;
+    url += '?api_key='+ this.apiKey;
+    
+     
+    return this.http.get(url).toPromise().then(data => 
+      // Read the result field from the JSON response.
+      //console.log('my data log= '+ data.json()['poster_path'])
+      //results = data.json()['poster_path'];
+      //console.log('my results = '+ results);
+      data.json()
+    );
+  }
+
   private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;

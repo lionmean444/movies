@@ -17,7 +17,7 @@ export class AddMovieComponent implements OnInit {
   movie:IMovie = new Movie(null, 1,'', null ,false, new Date(),false, []);
   poster:String;
   searchResults: any[] = [];
-  selectedSearchResult: IMovieSearchResult;
+  selectedSearchResult: any = this.selectedSearchResult= new Movie("1",22,'test', 3,false,null,false, null);
   
   
   constructor(private movieService:MovieService, private router: Router) {
@@ -74,6 +74,14 @@ export class AddMovieComponent implements OnInit {
  
 });
 
+}
+public selectMovie(id:Number){
+  console.log('selected clicked');
+  this.movieService.lookupMovie(id).then(data=>{
+    this.selectedSearchResult = data;  
+    this.movie.title = this.selectedSearchResult.title;
+  })
+  
 }
 
   
