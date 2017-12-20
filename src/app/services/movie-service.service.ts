@@ -13,6 +13,9 @@ export class MovieService {
   private moviesUrl = 'http://127.0.0.1:3000/movies'; 
   private headers = new Headers({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*'});
 
+  private apiKey = '737d5c170c6cee706e458b0c24b2327f';
+  private apiURL='https://api.themoviedb.org/3';
+
   mov: Movie = new Movie('1', 1, 'title',3,false,new Date('1/2/2017'),true,[]);
  
   movies:IMovie[] = [
@@ -58,6 +61,44 @@ export class MovieService {
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
+  }
+
+  public getMoviePoster(id:Number):  Promise<any>{
+    var url = this.apiURL+'/movie/'+id;
+    url += '?api_key='+ this.apiKey;
+    var base = 'http://image.tmdb.org/t/p/w185/';
+    var image = 'nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg';
+    var results='';
+    return this.http.get(url).toPromise().then(data => 
+      // Read the result field from the JSON response.
+      //console.log('my data log= '+ data.json()['poster_path'])
+      //results = data.json()['poster_path'];
+      //console.log('my results = '+ results);
+      base+data.json()['poster_path']
+      
+    );
+     
+    //  console.log('result empty');  
+     
+   // console.log('my results2 = '+ results);
+  // return base+results;
+   // var imagePath = this.http.get(url).toPromise().then(response => response.json().poster_path).catch(this.handleError)
+    //return this.http.get(this.moviesUrl).toPromise().then(response => response.json() as Movie[]).catch(this.handleError);
+
+  }
+  public searchMovie(title:String):Promise<any>{
+    console.log('begin searching movie: '+ title);
+    var url = this.apiURL+'/search/movie';
+    url += '?api_key='+ this.apiKey;
+    url += '&query='+title;
+     
+    return this.http.get(url).toPromise().then(data => 
+      // Read the result field from the JSON response.
+      //console.log('my data log= '+ data.json()['poster_path'])
+      //results = data.json()['poster_path'];
+      //console.log('my results = '+ results);
+      data.json()
+    );
   }
 
   private handleError(error: Response | any) {
