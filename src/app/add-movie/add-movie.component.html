@@ -1,56 +1,70 @@
 <div class="container">
   <h1>Add Movie</h1>
- 
-  <p>search</p>
+
+  <p>search
+    <input type="text" [(ngModel)]="searchTitle" />
+    <span (click)="searchMovie()">GO</span>
+  </p>
+
   <div class="row">
-    <div *ngFor="let m of searchResults" style="padding:5px; border: 1px solid red" >
-      <p> <img src={{m.posterr}}/></p>
-      <p (click)="selectMovie(m.id)">{{m.title}}</p>
+    <div *ngFor="let m of searchResults" style="padding:5px; border: 1px solid red">
+      <p>
+        <img src={{m.posterr}}/>
+      </p>
+      <p>
+      {{m.title}}<a (click)="selectMovie(m.id)">Add</a>    <a (click)="selectMovie(m.id)">To watch</a>
+    </p>
+      
+        <p>{{m.release_date}}</p>
       <p>{{m.overview}}</p>
+    </div>
+    <p *ngIf="!searchresults && searchClicked">No results found for '{{searchTitle}}'</p>
+  </div>
 
+
+  <div class="row">
+    <div class="col-sm-4  text-center">
+      <form class="outline" (ngSubmit)="onSubmit()" #movieForm="ngForm">
+        <span *ngIf="selectedSearchResult.posterr"><img [src]=selectedSearchResult.posterr/></span>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title">
+        </div>
+
+        <div class="form-group">
+            <label for="title">MDB ID</label>
+            <input type="text" class="form-control" id="id" required [(ngModel)]="selectedSearchResult.id" name="id">
+          </div>
+
+
+        <div class="form-group">
+          <label for="dateWatched">Date</label>
+          <input type="input" class="form-control" id="watchAgain" [ngModel]="movie.dateWatched |date:'shortDate'" (ngModelChange)="movie.dateWatched=$event"
+            name="dateWatched">
+        </div>
+
+        <div class="form-group">
+          <label for="rating">Rating</label>
+          <select class="form-control" id="rating" required [(ngModel)]="movie.rating" name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="watchAgain">Watch Again</label>
+          <input type="checkBox" class="form-control" id="watchAgain" [(ngModel)]="movie.watchAgain" name="watchAgain">
+        </div>
+
+        <div class="form-group">
+          <label for="th">Th</label>
+          <input type="checkBox" class="form-control" id="th" [(ngModel)]="movie.thiss" name="thiss">
+        </div>
+
+        <button class="btn btn-success" (click)="save()">Submit</button>
+
+      </form>
     </div>
   </div>
- 
-  <div class="row">
-    {{selectedSearchResult.title}}
-
-  </div>
-  <div class="row">
-  <div class="col-sm-4  text-center">
-    <form class="outline" (ngSubmit)="onSubmit()" #movieForm="ngForm">
-      <img [src]=poster/>
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" required [(ngModel)]="movie.title" name="title">
-    </div>
-
-    <div class="form-group">
-      <label for="dateWatched">Date</label>
-      <input type="input" class="form-control" id="watchAgain" [ngModel]="movie.dateWatched |date:'shortDate'"(ngModelChange)="movie.dateWatched=$event" name="dateWatched">
-    </div>
-
-    <div class="form-group">
-      <label for="rating">Rating</label>
-      <select class="form-control" id="rating" required [(ngModel)]="movie.rating" name="rating">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="watchAgain">Watch Again</label>
-      <input type="checkBox" class="form-control" id="watchAgain" [(ngModel)]="movie.watchAgain" name="watchAgain">
-    </div>
-
-    <div class="form-group">
-      <label for="th">Th</label>
-      <input type="checkBox" class="form-control" id="th" [(ngModel)]="movie.thiss" name="thiss">
-    </div>
-
-    <button    class="btn btn-success" (click)="save()">Submit</button>
-
-  </form>
-</div>
-</div>
 </div>

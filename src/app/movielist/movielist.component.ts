@@ -30,7 +30,11 @@ export class MovielistComponent implements OnInit {
   ngOnInit() {
    // this.movies = this.movieService.getStaticMovies(); //static
 
-  this.movieService.getMovies().then(data => this.movies = data);
+  this.movieService.getMovies().then(data => 
+    this.movies = data
+    
+  
+  );
   this.editMode = !!this.route.snapshot.paramMap.get("editMode");
     console.log('editmode= '+ this.editMode);
 

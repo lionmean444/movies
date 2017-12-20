@@ -87,7 +87,7 @@ export class MovieService {
 
   }
   public searchMovie(title:String):Promise<any>{
-    console.log('begin searching movie: '+ title);
+    console.log('begin searching movie in service.searchMovie: '+ title);
     var url = this.apiURL+'/search/movie';
     url += '?api_key='+ this.apiKey;
     url += '&query='+title;
@@ -102,7 +102,7 @@ export class MovieService {
   }
 
   public lookupMovie(id:Number):Promise<any>{
-    console.log('begin looking up movie: '+ id);
+    console.log('begin looking up movie in service.lookupMovie: '+ id);
     var url = this.apiURL+'/movie/'+id;
     url += '?api_key='+ this.apiKey;
     
