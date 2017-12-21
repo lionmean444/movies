@@ -4,8 +4,7 @@ import { MovieService } from '../services/movie-service.service'
 import { Movie, IMovie } from '../../models/movie'
 import { MovieSearchResult, IMovieSearchResult } from '../../models/movieSearchResult'
 import { forEach } from '@angular/router/src/utils/collection';
-import { MoviePosterComponent } from '../movie-poster/movie-poster.component'
-
+ 
 
 @Component({
   selector: 'app-add-movie',

@@ -16,8 +16,8 @@ export class MoviePosterComponent implements OnInit {
   }
   
   ngOnInit() {
-    // this.getMoviePoster();
-    this.poster = 'test'+ this.movieID;
+     this.getMoviePoster();
+    //this.poster = 'test'+ this.movieID;
   }
 
   //*WRAPPED this with setter @input because it needs to call the method when a movie is selected. */

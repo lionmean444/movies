@@ -2,9 +2,18 @@
     font-size:14px;
     line-height: 175%;
     border:1px solid orange;
-    margin-bottom:8px;
+    margin-bottom:12px;
     padding: 6px;
+
 }
-.movieListDiv > .title{
+     .movieText{
+        line-height: 160%;
+        font-size: 17px;
+    }
+
+    .movieText > .title{
     font-weight: bold;
-}
+    margin-bottom: 250px;
+    color:gray;
+    }
+ 

@@ -8,23 +8,26 @@
 
 
 <h1 *ngIf="!movies">loading movies...</h1>
-<div class="row">
-  <div class="col-md-6">
 
-    <div class="movieListDiv" *ngFor="let  m of movies">
-      <span class="title">{{m.title}} </span>
-      <br/> Date Watched: {{m.dateWatched |date:'shortDate' }}
-      <br/>Rating: {{m.rating}}
-      <br/> Watch Again: {{m.watchAgain}}
-      <br/> {{m.thiss}}
-      <br/> {{m.id}}
-      <span *ngIf="editMode">
-      <br/>ID: {{m._id}}
-      <br/>
-     <a [routerLink]="['/edit-movie', m._id]">Edit</a>
-      <br/>
-        <button (click)="deleteMovie(m)">Delete</button>
-      </span>
+<div class="movieListDiv" *ngFor="let  m of movies">
+  <div class="row">
+    <div class="col-md-6">
+
+      <div style="float:left; margin-right:20px">
+        <app-movie-poster [movieID]='m.id'></app-movie-poster>
+      </div>
+      <div class="movieText">
+        <span class="title">{{m.title}} </span>
+        <br/> Date Watched: {{m.dateWatched |date:'shortDate' }}
+        <br/>Rating: {{m.rating}}
+        <br/> Watch Again: {{m.watchAgain}}
+        <br/> {{m.thiss}}
+
+        <div *ngIf="editMode">
+          <a [routerLink]="['/edit-movie', m._id]">Edit</a>
+          <br/>
+          <button (click)="deleteMovie(m)">Delete</button>
+        </div>
+      </div>
     </div>
   </div>
-</div>
