@@ -1,19 +1,22 @@
 <div class="container">
   <h1>Add Movie</h1>
 
-  <p>search
-    <input type="text" [(ngModel)]="searchTitle" />&nbsp;&nbsp;
-    <i (click)="searchMovie()" class="fa fa-play fa-2x goButton" aria-hidden="false"></i>
-  </p>
+  <div class="searchDiv">search
+    <input type="text" [(ngModel)]="searchTitle" /> &nbsp;&nbsp;
+    <a (click)="searchMovie()" class="fa fa-play goButton" aria-hidden="true"></a>
+  </div>
+
 
   <div class="row">
-    <div *ngFor="let m of searchResults" style="padding:5px; border: 1px solid red">
-        <app-movie-poster [movieID]='m.id'></app-movie-poster>
+    <div *ngFor="let m of searchResults" style="padding:5px; border: 1px solid grey; margin:5px;">
+      <app-movie-poster [movieID]='m.id'></app-movie-poster>
       <p>
-      {{m.title}}<a (click)="selectMovie(m.id)">Add</a>    <a (click)="selectMovie(m.id)">To watch</a>
-    </p>
-      
-        <p>{{m.release_date}}</p>
+        {{m.title}}
+        <a (click)="selectMovie(m.id)">Add</a>
+        <a (click)="selectMovie(m.id)">To watch</a>
+      </p>
+
+      <p>{{m.release_date}}</p>
       <p>{{m.overview}}</p>
     </div>
     <p *ngIf="!searchresults && searchClicked">No results found for '{{searchTitle}}'</p>
@@ -22,9 +25,9 @@
 
   <div class="row">
     <div class="col-sm-4  text-center">
-      
+
       <form class="outline" (ngSubmit)="onSubmit()" #movieForm="ngForm">
-        
+
         <app-movie-poster [movieID]=selectedSearchResult.id></app-movie-poster>
         <div class="form-group">
           <label for="title">Title</label>
@@ -32,9 +35,9 @@
         </div>
 
         <div class="form-group">
-            <label for="title">MDB ID</label>
-            <input type="text" class="form-control" id="id" required [(ngModel)]="selectedSearchResult.id" name="id">
-          </div>
+          <label for="title">MDB ID</label>
+          <input type="text" class="form-control" id="id" required [(ngModel)]="selectedSearchResult.id" name="id">
+        </div>
 
 
         <div class="form-group">
