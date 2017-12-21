@@ -3,15 +3,16 @@
   {{movies.length}} movies
   <p>
 </h1>
-<a href="#" class="smallLink" (click)="editModeToggle(!editMode)">{{editMode ? 'Turn off edit' : 'Edit'}} </a>
 
 <div class="searchDiv">search
-    <input type="text" [(ngModel)]="searchTitle" />
-    &nbsp;&nbsp; Watch Again
-    <input type="checkbox" [(ngModel)]="searchWatchAgain"/>
-    &nbsp;&nbsp;&nbsp;
-    <a (click)="searchMovie()" class="fa fa-play goButton" aria-hidden="true"></a>
+  <input type="text" [(ngModel)]="searchTitle" />
+  &nbsp;&nbsp; Watch Again
+  <input type="checkbox" [(ngModel)]="searchWatchAgain"/>
+  &nbsp;&nbsp;&nbsp;
+  <a (click)="searchMovie()" class="fa fa-play goButton" aria-hidden="true"></a>
 </div>
+
+<a href="#" class="smallLink" (click)="editModeToggle(!editMode)">{{editMode ? 'Turn off edit' : 'Edit'}} </a>
 
 <h1 *ngIf="!movies">loading movies...</h1>
 
