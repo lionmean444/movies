@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -15,7 +15,9 @@ import { Movie, IMovie } from '../../models/movie'
 
 
 export class MovielistComponent implements OnInit {
-
+  
+  @Input() searchTitle: String;
+  @Input() searchWatchAgain: boolean;
 
   movies: Movie[];
   editMode: boolean;
@@ -32,7 +34,6 @@ export class MovielistComponent implements OnInit {
 
     this.movieService.getMovies().then(data =>
       this.movies = data
-
     );
 
     this.editMode = !!this.route.snapshot.paramMap.get("editMode");
@@ -46,6 +47,24 @@ export class MovielistComponent implements OnInit {
         this.movies = this.movies.filter(m => m !== movie);
       });
   }
+
+  public searchMovie() {
+    console.log('start search movie for ' + this.searchTitle);
+    if (this.searchTitle){
+     
+    this.movieService.getMovies().then(data =>
+      
+      this.movies = data.filter(
+        m => m.title.toLowerCase()  === this.searchTitle.toLowerCase()));
+      
+      } else {
+
+        this.movieService.getMovies().then(data =>
+          this.movies = data.filter(m=>m.watchAgain == this.searchWatchAgain ));
+
+      }
+    }
+
   public editModeToggle(turnOn: boolean) {
     console.log('editMode is ' + this.editMode + 'turning it ' + turnOn);
     this.editMode = turnOn;

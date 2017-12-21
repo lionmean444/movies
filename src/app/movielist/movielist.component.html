@@ -5,7 +5,13 @@
 </h1>
 <a href="#" class="smallLink" (click)="editModeToggle(!editMode)">{{editMode ? 'Turn off edit' : 'Edit'}} </a>
 
-
+<p>search
+    <input type="text" [(ngModel)]="searchTitle" />
+    &nbsp;&nbsp; Watch Again
+    <input type="checkbox" [(ngModel)]="searchWatchAgain"/>
+    &nbsp;&nbsp;&nbsp;
+    <span (click)="searchMovie()">GO</span>
+  </p>
 
 <h1 *ngIf="!movies">loading movies...</h1>
 

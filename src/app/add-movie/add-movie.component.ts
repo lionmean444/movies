@@ -19,7 +19,7 @@ export class AddMovieComponent implements OnInit {
   poster: String;
   searchResults: any[] = [];
   selectedSearchResult: any = this.selectedSearchResult = new Movie("1", 0, 'test', 3, false, null, false, null);
-  @Input() searchTitle: String = 'Rocky';
+  @Input() searchTitle: String;
 
   constructor(private movieService: MovieService, private router: Router) {
   }
@@ -42,18 +42,14 @@ export class AddMovieComponent implements OnInit {
     this.router.navigateByUrl('/movielist');
   }
 
-   
-
   public searchMovie() {
     console.log('start search movie for ' + this.searchTitle);
     this.searchClicked = true;
     this.movieService.searchMovie(this.searchTitle).then(data => {
       this.searchResults = data.results;// (new MovieSearchResult(1, data.results[0].title, null, null))
-    
-
     });
-
   }
+
   public selectMovie(id: Number) {
     console.log('selected clicked');
     this.movieService.lookupMovie(id).then(data => {
