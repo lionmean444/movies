@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ##Heroku
 heroku git:remote -a lionmean444-movies
-git push heroku <branch> to deploy
+git push heroku <branch> to deploy ..this didnt work, apperently needs to be master
 
 ##build
 
