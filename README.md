@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
 
 ##Heroku
+heroku git:remote -a lionmean444-movies
 git push heroku master to deploy
 
 ##build
