@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 var distDir = __dirname + "/dist";
-app.use(express.static(distDir));
- 
+//app.use(express.static(distDir));
+app.use(express.static('dist'));
 
 
 //app.use(express.static(__dirname + '/dist'));
