@@ -20,6 +20,7 @@ import { MovielistComponent } from './movielist/movielist.component';
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { MoviePosterComponent } from './movie-poster/movie-poster.component';
+import { ToWatchListComponent } from './to-watch-list/to-watch-list.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     AddMovieComponent,
     EditMovieComponent,
     MoviePosterComponent,
+    ToWatchListComponent,
     
   ],
   imports: [
