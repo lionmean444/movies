@@ -15,10 +15,10 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class AddMovieComponent implements OnInit {
   submitted: boolean;
   searchClicked: boolean;
-  movie: IMovie = new Movie(null, 1, '', null, false, new Date(), false, []);
+  movie: IMovie = new Movie(null, 1, '', null, false, new Date(), false, true, []);
   poster: String;
   searchResults: any[] = [];
-  selectedSearchResult: any = this.selectedSearchResult = new Movie("1", 0, 'test', 3, false, null, false, null);
+  selectedSearchResult: any = this.selectedSearchResult = new Movie("1", 0, 'test', 3, false, null, false, false, null);
   @Input() searchTitle: String;
 
   constructor(private movieService: MovieService, private router: Router) {
@@ -32,6 +32,7 @@ export class AddMovieComponent implements OnInit {
 
   public save() {
     this.movie.id = this.selectedSearchResult.id;
+    this.movie.planToWatch=false;
     this.movieService.addMovie(this.movie)
       .then(() => {
         console.log('added movie' + this.movie.title);

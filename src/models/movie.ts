@@ -7,6 +7,7 @@ export interface IMovie{
     characters:String[];
     dateWatched:Date;
     watchAgain:boolean;
+    planToWatch:boolean;
 }
 
 export class Movie implements IMovie{
@@ -18,6 +19,7 @@ export class Movie implements IMovie{
         public thiss: boolean,
         public dateWatched: Date,
         public watchAgain: boolean,
+        public planToWatch:boolean,
         public characters: String[]){}
     
 }

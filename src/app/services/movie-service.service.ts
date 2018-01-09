@@ -10,18 +10,19 @@ import {Movie, IMovie} from '../../models/movie'
 @Injectable()
 export class MovieService {
 
-  private moviesUrl = '/movies'; 
+  // private moviesUrl = '/movies'; //run with single node server
+  private moviesUrl = 'http://127.0.0.1:3000/movies'; //use when ng serve nad seperate node server
   private headers = new Headers({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*'});
 
   private apiKey = '737d5c170c6cee706e458b0c24b2327f';
   private apiURL='https://api.themoviedb.org/3';
 
-  mov: Movie = new Movie('1', 1, 'title',3,false,new Date('1/2/2017'),true,[]);
+  mov: Movie = new Movie('1', 1, 'title',3,false,new Date('1/2/2017'),true, false, []);
  
   movies:IMovie[] = [
    this.mov,
-   new Movie('2',2, 'title',3,false,new Date('1/2/2017'),true,[]),
-   {_id:'1',id:3, title:'title',rating:3,thiss:false, dateWatched: new Date('1/2/2017'),watchAgain:true, characters: []}
+   new Movie('2',2, 'title',3,false,new Date('1/2/2017'),true,false, []),
+   {_id:'1',id:3, title:'title',rating:3,thiss:false, dateWatched: new Date('1/2/2017'),watchAgain:true, planToWatch:false, characters: []}
    //{'title',3,false,new Date('1/2/2017'),true,[]}
 ]
 
@@ -87,7 +88,7 @@ export class MovieService {
 
   }
   public searchMovie(title:String):Promise<any>{
-    console.log('begin searching movie in service.searchMovie: '+ title);
+  //  console.log('begin searching movie in service.searchMovie: '+ title);
     var url = this.apiURL+'/search/movie';
     url += '?api_key='+ this.apiKey;
     url += '&query='+title;
@@ -102,7 +103,7 @@ export class MovieService {
   }
 
   public lookupMovie(id:Number):Promise<any>{
-    console.log('begin looking up movie in service.lookupMovie: '+ id);
+  //  console.log('begin looking up movie in service.lookupMovie: '+ id);
     var url = this.apiURL+'/movie/'+id;
     url += '?api_key='+ this.apiKey;
     

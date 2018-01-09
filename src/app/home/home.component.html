@@ -14,6 +14,11 @@
             View all the movies I watched <a routerLink="/movielist">here</a>.
         
         </div>
+        <div class="panel-body">
+         
+          View all the movies I want to watch <a [routerLink]="['/movielist']" [queryParams]="{toWatch:'true'}">here</a>.
+      
+      </div>
       </div>
     </div>
 

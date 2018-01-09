@@ -12,6 +12,7 @@ var MovieSchema = new mongoose.Schema({
     dateWatched: Date,
     watchAgain: Boolean,
     characters: [[String]],
+    planToWatch: Boolean,
     updated_at: { type: Date, default: Date.now },
 });
 
@@ -19,7 +20,7 @@ var MovieSchema = new mongoose.Schema({
 var Movie = mongoose.model('Movie', MovieSchema);
 
 // Create a todo in memory
-var mov = new Movie({ name: 'Master NodeJS', watchAgain: false, rating: 1});
+var mov = new Movie({ name: 'Master NodeJS', watchAgain: false, planToWatch: false, rating: 1});
 // Save it to database
 /*
 mov.save(function (err) {

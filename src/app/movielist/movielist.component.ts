@@ -1,7 +1,7 @@
 import { Component, OnInit, Injectable, Input } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { MovieService } from '../services/movie-service.service'
 import { Movie, IMovie } from '../../models/movie'
@@ -21,24 +21,32 @@ export class MovielistComponent implements OnInit {
 
   movies: Movie[];
   editMode: boolean;
+  planToWatch: Boolean;
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute) {
+  constructor(private movieService: MovieService, private activatedroute:ActivatedRoute) {
     //the following is needed as oninit doesnt refresh
-    this.movieService.getMovies().then(data => this.movies = data);
-    this.editMode = !!this.route.snapshot.paramMap.get("editMode");
-    console.log('editmode= ' + this.editMode);
+    activatedroute.queryParams
+    .subscribe(params => {
+      this.planToWatch = params['toWatch']=="true";
+     });
+     
+     
+     this.movieService.getMovies().then(data =>
+      this.movies = data.filter(m=>m.planToWatch == this.planToWatch)
+      );
+    console.log('toWatch param = ' + this.planToWatch);
+    
   }
 
   ngOnInit() {
     // this.movies = this.movieService.getStaticMovies(); //static
-
+     
     this.movieService.getMovies().then(data =>
-      this.movies = data
+      //this.movies = data 
+      this.movies = data.filter(m=>m.planToWatch == this.planToWatch)
+      
     );
-
-    this.editMode = !!this.route.snapshot.paramMap.get("editMode");
-    console.log('editmode= ' + this.editMode);
-
+    console.log('toWatch init = ' + this.planToWatch);
 
   }
   deleteMovie(movie: IMovie): void {

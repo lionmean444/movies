@@ -27,8 +27,8 @@ export class MoviePosterComponent implements OnInit {
   }
   @Input()
   set movieID(movieID: Number) {
-    console.log('prev value: ', this._movieID);
-    console.log('got name: ', movieID);
+  //  console.log('prev value: ', this._movieID);
+ //   console.log('got name: ', movieID);
     this._movieID = movieID;
     this.getMoviePoster();
   }
@@ -36,7 +36,7 @@ export class MoviePosterComponent implements OnInit {
 
 
   public getMoviePoster() {
-    console.log('start getting poster');
+    // console.log('start getting poster');
     
     this.movieService.getMoviePoster(this.movieID).then(data => {
       if (data != 'undefined' || data != 'null' || data != '' || data != ' ') {
@@ -44,7 +44,7 @@ export class MoviePosterComponent implements OnInit {
       } else {
         this.poster = '';
       }
-      console.log('poster data ' + this.movieID + '-' + data)
+  //    console.log('poster data ' + this.movieID + '-' + data)
     }).catch(e => {
 
       console.log('error getting movies poster for ' + this.movieID + ' ' + e);
