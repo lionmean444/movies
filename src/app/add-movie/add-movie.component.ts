@@ -44,7 +44,7 @@ export class AddMovieComponent implements OnInit {
   }
 
   public searchMovie() {
-    console.log('start search movie for ' + this.searchTitle);
+    //console.log('start search movie for ' + this.searchTitle);
     this.searchClicked = true;
     this.movieService.searchMovie(this.searchTitle).then(data => {
       this.searchResults = data.results;// (new MovieSearchResult(1, data.results[0].title, null, null))
@@ -52,7 +52,7 @@ export class AddMovieComponent implements OnInit {
   }
 
   public selectMovie(id: Number) {
-    console.log('selected clicked');
+   // console.log('selected clicked');
     this.movieService.lookupMovie(id).then(data => {
       this.selectedSearchResult = data;
      

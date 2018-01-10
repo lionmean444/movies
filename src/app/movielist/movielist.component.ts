@@ -22,31 +22,47 @@ export class MovielistComponent implements OnInit {
   movies: Movie[];
   editMode: boolean;
   planToWatch: Boolean;
+  nowPlaying: Boolean = false;
 
   constructor(private movieService: MovieService, private activatedroute:ActivatedRoute) {
     //the following is needed as oninit doesnt refresh
     activatedroute.queryParams
     .subscribe(params => {
       this.planToWatch = params['toWatch']=="true";
+      this.nowPlaying = params['nowplaying']=="true";
      });
      
-     
+     console.log('toWatch param = ' + this.planToWatch);
+     console.log('newreleases param = ' + this.nowPlaying);
+     if (this.nowPlaying == true){
+       console.log('newreleases getting');
+       this.movieService.getNowPlaying().then(data =>
+        this.movies = data
+        );
+     } else {
      this.movieService.getMovies().then(data =>
       this.movies = data.filter(m=>m.planToWatch == this.planToWatch)
       );
-    console.log('toWatch param = ' + this.planToWatch);
+    }
     
   }
 
   ngOnInit() {
     // this.movies = this.movieService.getStaticMovies(); //static
      
+    if (this.nowPlaying == true){
+      this.movieService.getNowPlaying().then(data =>
+        this.movies = data
+        );
+     } else {
     this.movieService.getMovies().then(data =>
       //this.movies = data 
       this.movies = data.filter(m=>m.planToWatch == this.planToWatch)
       
     );
+  }
     console.log('toWatch init = ' + this.planToWatch);
+    console.log('nowPlaying param = ' + this.nowPlaying);
 
   }
   deleteMovie(movie: IMovie): void {
@@ -85,6 +101,24 @@ export class MovielistComponent implements OnInit {
       })
     }
 
+    public saveMovieToWatch(id: Number){
+      console.log('id= '+ id);
+      
+      var movie: IMovie = new Movie(null, id, '', null, false, new Date(), false, true, []);
+      this.movieService.lookupMovie(id).then(data => {
+        movie = data;
+        movie.title = data.title;
+        console.log('title= '+data.title);
+        movie.planToWatch = true;
+        this.movieService.addMovie(movie)
+          .then(() => {
+            console.log('added movie to watch' + movie.title);
+            
+          });
+     
+      })
+    }
+    
   public editModeToggle(turnOn: boolean) {
     console.log('editMode is ' + this.editMode + 'turning it ' + turnOn);
     this.editMode = turnOn;

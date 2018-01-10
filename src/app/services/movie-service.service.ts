@@ -116,6 +116,22 @@ export class MovieService {
       data.json()
     );
   }
+  
+  public getNowPlaying(): Promise<any>{
+    //  console.log('begin searching movie in service.searchMovie: '+ title);
+      var url = this.apiURL+'/movie/now_playing';
+      url += '?api_key='+ this.apiKey;
+      
+       
+      return this.http.get(url).toPromise().then(data => 
+        // Read the result field from the JSON response.
+        //console.log('my data log= '+ data.json()['poster_path'])
+        //results = data.json()['poster_path'];
+        //console.log('my results = '+ data.json()["results"])
+        data.json()["results"]
+      );
+    }
+
 
   private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure

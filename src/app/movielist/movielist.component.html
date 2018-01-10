@@ -24,7 +24,7 @@
         <app-movie-poster [movieID]='m.id'></app-movie-poster>
       </div>
       <div class="movieText">
-        <div *ngIf="planToWatch==false">
+        <div *ngIf="planToWatch==false && nowPlaying==false">
         <span class="title">{{m.title}} </span>
         <br/> Date Watched: {{m.dateWatched |date:'shortDate' }}
         <br/>Rating: {{m.rating}}
@@ -35,6 +35,12 @@
       <div *ngIf="planToWatch==true">
           <span class="title">{{m.title}} </span>
           <br/> <button (click)="saveAsWatched(m._id)">Watched</button>
+        </div>
+
+        <div *ngIf="nowPlaying==true">
+          <span class="title">{{m.title}} </span>
+          <p><span class="title">{{m.id}} </span></p>
+          <br/> <button (click)="saveMovieToWatch(m.id)">Add to Watch</button>
         </div>
 
         <div *ngIf="editMode">

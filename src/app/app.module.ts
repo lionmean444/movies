@@ -26,10 +26,12 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'movielist', component: MovielistComponent},
   { path: 'movielistToWatch', component: MovielistComponent},
+  { path: 'nowplaying', component: MovielistComponent},
   { path: 'add-movie', component: AddMovieComponent},
   { path: 'add-towatch-movie/:id', component: EditMovieComponent},
    { path: 'edit-movie/:id', component: EditMovieComponent},
   
+     
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 @NgModule({
