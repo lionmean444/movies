@@ -1,6 +1,6 @@
 export interface IMovie{
     _id:String,
-    id:number,
+    id:Number,
     title:String;
     rating: Number;
     thiss:boolean;
@@ -11,9 +11,8 @@ export interface IMovie{
 }
 
 export class Movie implements IMovie{
-     
     constructor (public _id:String,
-        public id:number,
+        public id:Number,
         public title: String,
         public rating: Number,
         public thiss: boolean,

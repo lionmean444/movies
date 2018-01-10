@@ -24,11 +24,18 @@
         <app-movie-poster [movieID]='m.id'></app-movie-poster>
       </div>
       <div class="movieText">
+        <div *ngIf="planToWatch==false">
         <span class="title">{{m.title}} </span>
         <br/> Date Watched: {{m.dateWatched |date:'shortDate' }}
         <br/>Rating: {{m.rating}}
         <br/> Watch Again: {{m.watchAgain}}
         <br/> {{m.thiss}}
+      </div>
+
+      <div *ngIf="planToWatch==true">
+          <span class="title">{{m.title}} </span>
+          <br/> <button (click)="saveAsWatched(m._id)">Watched</button>
+        </div>
 
         <div *ngIf="editMode">
           <a [routerLink]="['/edit-movie', m._id]">Edit</a>

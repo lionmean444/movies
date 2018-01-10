@@ -73,6 +73,18 @@ export class MovielistComponent implements OnInit {
       }
     }
 
+    public saveAsWatched(_id: String){
+      var movie: any;
+      movie = new Movie(_id, null,'',null,null,null,null,true, []);
+      this.movieService.getMovie(_id).then(data => {
+        movie = data;
+        console.log('data= '+ movie);
+        //   movie.dateWatched= new Date();
+           movie.planToWatch = false;
+           this.movieService.editMovie(movie);
+      })
+    }
+
   public editModeToggle(turnOn: boolean) {
     console.log('editMode is ' + this.editMode + 'turning it ' + turnOn);
     this.editMode = turnOn;

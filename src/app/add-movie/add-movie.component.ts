@@ -62,4 +62,24 @@ export class AddMovieComponent implements OnInit {
     this.searchClicked = false;
     
   }
+
+  public saveMovieToWatch(id: Number){
+    console.log('id= '+ id);
+    
+    var movie: IMovie = new Movie(null, id, '', null, false, new Date(), false, true, []);
+    this.movieService.lookupMovie(id).then(data => {
+      movie = data;
+      movie.title = data.title;
+      console.log('title= '+data.title);
+      movie.planToWatch = true;
+      this.movieService.addMovie(movie)
+        .then(() => {
+          console.log('added movie to watch' + movie.title);
+          
+        });
+   
+    })
+
+   
+  }
 }
