@@ -38,8 +38,8 @@
         </div>
 
         <div *ngIf="nowPlaying==true">
-          <span class="title">{{m.title}} </span>
-          <p><span class="title">{{m.id}} </span></p>
+          <span style="text-decoration: underline" class="title">{{m.title}} </span>
+          <p style="margin-top:7px">{{m.overview}}</p>
           <br/> <button (click)="saveMovieToWatch(m.id)">Add to Watch</button>
         </div>
 
