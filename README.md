@@ -12,3 +12,6 @@ Run `npm install` to build the project. The build artifacts will be stored in th
 
 ##Run
 Run 'node server.js'
+modify moviesUrl in service.
+if deploying to azure or others, make sure service is using the relative URL.
+ 
