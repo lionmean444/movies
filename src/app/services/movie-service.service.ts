@@ -10,8 +10,8 @@ import {Movie, IMovie} from '../../models/movie'
 @Injectable()
 export class MovieService {
 
-  // private moviesUrl = '/movies'; //run with single node server
-  private moviesUrl = 'http://127.0.0.1:3000/movies'; //use when ng serve nad seperate node server
+  private moviesUrl = '/movies'; //run with single node server
+  //private moviesUrl = 'http://127.0.0.1:3000/movies'; //use when ng serve nad seperate node server
   private headers = new Headers({'Content-Type': 'application/json','Access-Control-Allow-Origin': '*'});
 
   private apiKey = '737d5c170c6cee706e458b0c24b2327f';
