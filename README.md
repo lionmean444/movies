@@ -8,7 +8,8 @@ git push heroku <branch> to deploy ..this didnt work, apperently needs to be mas
 
 ##build
 
-Run `npm install` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+(npm install doesnt create the dist folder, may need switches)
 
 ##Run
 Run 'node server.js'
